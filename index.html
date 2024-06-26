@@ -1,0 +1,73 @@
+<html>
+
+<head>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // List of URLs for the iframes
+      const iframeSources = [
+        "https://google.com/",
+        "https://google.com/",
+        "https://google.com/",
+        "https://google.com/",
+        "https://google.com/",
+        "https://google.com/",
+        "https://google.com/",
+        "",
+        ""
+      ];
+
+      // Get all iframes and set their src attributes
+      const iframes = document.querySelectorAll("iframe");
+      iframes.forEach((iframe, index) => {
+        iframe.src = iframeSources[index];
+      });
+    });
+  </script>
+
+</head>
+
+<body>
+
+  <div>
+    <div class="flex flex-row">
+      <iframe src="" id="frame1"></iframe>
+      <iframe src="" id="frame2"></iframe>
+      <iframe src="" id="frame3"></iframe>
+    </div>
+    <div class="flex flex-row">
+      <iframe src="" id="frame4"></iframe>
+      <iframe src="" id="frame5"></iframe>
+      <iframe src="" id="frame6"></iframe>
+    </div>
+    <div class="flex flex-row">
+      <iframe src="" id="frame7"></iframe>
+      <a href="https://miro.com" target="_blank" id="frame8">OPEN MIRO</a>
+      <a href="https://miro.com" target="_blank" id="frame9" class="">OPEN MIRO</a>
+    </div>
+  </div>
+
+  <style>
+    iframe {
+      height: 350px;
+      width: 33.333333%;
+    }
+
+    a {
+      height: 350px;
+      width: 33.333333%;
+      background-color: indigo;
+      font-weight: 700;
+      font-size: 32px;
+      --tw-text-opacity: 1;
+      color: rgb(255 255 255 / var(--tw-text-opacity));
+      text-align: center;
+      place-content: center;
+    }
+  </style>
+
+</body>
+
+</html>
