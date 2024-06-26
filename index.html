@@ -6,23 +6,19 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      // List of URLs for the iframes
-      const iframeSources = [
-        "https://google.com/",
-        "https://google.com/",
-        "https://google.com/",
-        "https://google.com/",
-        "https://google.com/",
-        "https://google.com/",
-        "https://google.com/",
-        "",
-        ""
-      ];
+
+      if (!localStorage.getItem("urls")) {
+        const initialUrls = ["","", "", "", "", "", "", ""];
+        localStorage.setItem("urls", JSON.stringify(initialUrls));
+      }
+      
+      urlString = localStorage.getItem("urls");
+      urlJson = JSON.parse(urlString);
 
       // Get all iframes and set their src attributes
       const iframes = document.querySelectorAll("iframe");
       iframes.forEach((iframe, index) => {
-        iframe.src = iframeSources[index];
+        iframe.src = urlJson[index];
       });
     });
   </script>
@@ -30,7 +26,6 @@
 </head>
 
 <body>
-
   <div>
     <div class="flex flex-row">
       <iframe src="" id="frame1"></iframe>
@@ -44,21 +39,27 @@
     </div>
     <div class="flex flex-row">
       <iframe src="" id="frame7"></iframe>
-      <a href="https://miro.com" target="_blank" id="frame8">OPEN MIRO</a>
-      <a href="https://miro.com" target="_blank" id="frame9" class="">OPEN MIRO</a>
+      <iframe src="" id="frame8"></iframe>
+      <div id="link">
+        <a href="https://miro.com" target="_blank" id="frame9" class="">OPEN MIRO</a>
+      </div>
     </div>
+  </div>
+  <div class="flex flex-row max-h-[5px] w-full md:w-auto">
+    <a href="config.html" class="bg-indigo-800 min-w-full pb-2"></a>
   </div>
 
   <style>
+    
     iframe {
-      height: 350px;
+      height: 450px;
       width: 33.333333%;
     }
 
-    a {
-      height: 350px;
+    #link {
+      height: 450px;
       width: 33.333333%;
-      background-color: indigo;
+      --tw-bg-opacity: 1; background-color: rgb(55 48 163 / var(--tw-bg-opacity));
       font-weight: 700;
       font-size: 32px;
       --tw-text-opacity: 1;
@@ -66,6 +67,11 @@
       text-align: center;
       place-content: center;
     }
+
+    #link:hover {
+      --tw-bg-opacity: 1; background-color: rgb(79 70 229 / var(--tw-bg-opacity));
+    }
+
   </style>
 
 </body>

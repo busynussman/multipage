@@ -1,0 +1,124 @@
+<html>
+
+<head>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+
+    // TODO LIST:
+    // GET ALL URLS
+    // SET EACH INPUT VALUE = URL[index]
+    // SAVE EACH INPUT ON BUTTON CLICK
+    
+    // document.addEventListener("DOMContentLoaded", function () {
+
+    //   if (!localStorage.getItem("urls")) {
+    //     const initialUrls = ["","", "", "", "", "", "", ""];
+    //     localStorage.setItem("urls", JSON.stringify(initialUrls));
+    //   }
+
+    //   urlString = localStorage.getItem("urls");
+    //   urlJson = JSON.parse(urlString);
+
+    //   // Get all iframes and set their src attributes
+    //   const iframes = document.querySelectorAll("iframe");
+    //   iframes.forEach((iframe, index) => {
+    //     iframe.src = urlJson[index];
+    //   });
+    // });
+  </script>
+
+</head>
+
+<body>
+  
+  <div>
+    <div class="flex flex-row">
+      <div id="input">
+        <div class="max-w-48">
+          <label for="1"><code>window: 1</code></label>
+          <input
+            type="text"
+            id="1"
+            class="border-2 border-gray-300 rounded-lg p-2 w-full my-2"
+          />
+          <button class="bg-indigo-600 min-w-1/2 p-2 text-white" onclick="setUrl(1)"><code>save</code></button>
+        </div>
+      </div>
+      <div id="input">
+        <div class="max-w-48">
+          <label for="2"><code>window: 2</code></label>
+          <input
+            type="text"
+            id="2"
+            class="border-2 border-gray-300 rounded-lg p-2 w-full my-2"
+          />
+          <button class="bg-indigo-600 min-w-1/2 p-2 text-white" onclick="setUrl(2)"><code>save</code></button>
+        </div>
+      </div>
+      <div id="input">
+        <div class="max-w-48">
+          <label for="3"><code>window: 3</code></label>
+          <input
+            type="text"
+            id="3"
+            class="border-2 border-gray-300 rounded-lg p-2 w-full my-2"
+          />
+          <button class="bg-indigo-600 min-w-1/2 p-2 text-white" onclick="setUrl(3)"><code>save</code></button>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-row">
+      <div id="input"></div>
+      <div id="input"></div>
+      <div id="input"></div>
+    </div>
+    <div class="flex flex-row">
+      <div id="input"></div>
+      <div id="input"></div>
+      <div id="link">
+        <a href="https://miro.com" target="_blank" id="frame9" class="">OPEN MIRO</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-row max-h-[5px] w-full md:w-auto">
+    <a href="index.html" class="bg-indigo-800 min-w-full pb-2"></a>
+  </div>
+
+  <style>
+
+    #input {
+      display: flex;
+      flex-direction: column;
+      height: 450px;
+      width: 33.333333%;
+      border: 1px;
+      border-style: solid;
+      place-content: center;
+      place-items: center;
+      text-align: center;
+    }
+
+    #link {
+      height: 450px;
+      width: 33.333333%;
+      --tw-bg-opacity: 1; background-color: rgb(55 48 163 / var(--tw-bg-opacity));
+      font-weight: 700;
+      font-size: 32px;
+      --tw-text-opacity: 1;
+      color: rgb(255 255 255 / var(--tw-text-opacity));
+      text-align: center;
+      place-content: center;
+    }
+
+    #link:hover {
+      --tw-bg-opacity: 1; background-color: rgb(79 70 229 / var(--tw-bg-opacity));
+    }
+
+  </style>
+
+</body>
+
+</html>
