@@ -4,6 +4,8 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <link rel="stylesheet" href="style.css">
+  
   <script>
     document.addEventListener("DOMContentLoaded", function () {
 
@@ -27,52 +29,28 @@
 
 <body>
   <div>
-    <div class="flex flex-row">
+    <div class="flex flex-row row-1">
       <iframe src="" id="frame1"></iframe>
       <iframe src="" id="frame2"></iframe>
       <iframe src="" id="frame3"></iframe>
     </div>
-    <div class="flex flex-row">
-      <iframe src="" id="frame4"></iframe>
-      <iframe src="" id="frame5"></iframe>
-      <iframe src="" id="frame6"></iframe>
+    <div class="flex flex-row row-2">
+      <iframe src="" id="frame4" ></iframe>
+      <iframe src="" id="frame5" ></iframe>
+      <iframe src="" id="frame6" ></iframe>
     </div>
-    <div class="flex flex-row">
-      <iframe src="" id="frame7"></iframe>
-      <iframe src="" id="frame8"></iframe>
+    <div class="flex flex-row row-3">
+      <iframe src="" id="frame7" ></iframe>
+      <iframe src="" id="frame8" ></iframe>
       <div id="link">
-        <a href="https://miro.com" target="_blank" id="frame9" class="">OPEN MIRO</a>
+        <a href="https://miro.com" target="_blank" id="frame9" class="row-3">Tier 3 Miro</a>
       </div>
     </div>
   </div>
+
   <div class="flex flex-row max-h-[5px] w-full md:w-auto">
     <a href="config.html" class="bg-indigo-800 min-w-full pb-2"></a>
   </div>
-
-  <style>
-    
-    iframe {
-      height: 450px;
-      width: 33.333333%;
-    }
-
-    #link {
-      height: 450px;
-      width: 33.333333%;
-      --tw-bg-opacity: 1; background-color: rgb(55 48 163 / var(--tw-bg-opacity));
-      font-weight: 700;
-      font-size: 32px;
-      --tw-text-opacity: 1;
-      color: rgb(255 255 255 / var(--tw-text-opacity));
-      text-align: center;
-      place-content: center;
-    }
-
-    #link:hover {
-      --tw-bg-opacity: 1; background-color: rgb(79 70 229 / var(--tw-bg-opacity));
-    }
-
-  </style>
 
 </body>
 

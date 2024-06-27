@@ -4,29 +4,46 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <link rel="stylesheet" href="style.css">
+  
   <script>
 
-    // TODO LIST:
-    // GET ALL URLS
-    // SET EACH INPUT VALUE = URL[index]
-    // SAVE EACH INPUT ON BUTTON CLICK
+    document.addEventListener("DOMContentLoaded", function () {
+
+      if (!localStorage.getItem("urls")) {
+        const initialUrls = ["","", "", "", "", "", "", ""];
+        localStorage.setItem("urls", JSON.stringify(initialUrls));
+      }
+
+      urlString = localStorage.getItem("urls");
+      urlJson = JSON.parse(urlString);
+
+      // Get all inputs and set their placeholder text
+      const textInputs = document.querySelectorAll("input");
+      textInputs.forEach((input, index) => {
+        if (urlJson && urlJson[index]) {
+          input.value = urlJson[index];
+        }
+      });
+    });
+
+    function setUrl(input, url) {
+      // get the array of the local urls array
+      urlString = localStorage.getItem("urls");
+      urlJson = JSON.parse(urlString);
+      // set the url in the array based on input
+      urlJson[input] = url;
+      // set the local storage to the new array
+      localStorage.setItem("urls", JSON.stringify(urlJson));
+      // update the save button for 2 seconds
+      const element = document.getElementById(input);
+      element.value = 'saved!';
+      // revert after 2 seconds
+      setTimeout(() => {
+        element.value = url;
+      }, 2000);
+    };
     
-    // document.addEventListener("DOMContentLoaded", function () {
-
-    //   if (!localStorage.getItem("urls")) {
-    //     const initialUrls = ["","", "", "", "", "", "", ""];
-    //     localStorage.setItem("urls", JSON.stringify(initialUrls));
-    //   }
-
-    //   urlString = localStorage.getItem("urls");
-    //   urlJson = JSON.parse(urlString);
-
-    //   // Get all iframes and set their src attributes
-    //   const iframes = document.querySelectorAll("iframe");
-    //   iframes.forEach((iframe, index) => {
-    //     iframe.src = urlJson[index];
-    //   });
-    // });
   </script>
 
 </head>
@@ -34,90 +51,118 @@
 <body>
   
   <div>
-    <div class="flex flex-row">
+    <div class="flex flex-row row-1">
       <div id="input">
         <div class="max-w-48">
-          <label for="1"><code>window: 1</code></label>
+          <label for="0"><code>window: 1</code></label>
+          <input
+            type="text"
+            id="0"
+            class="text-input"
+            value=""
+          />
+          <button class="button" onclick="setUrl(0,document.getElementById('0').value)"><code>save</code></button>
+        </div>
+      </div>
+      <div id="input">
+        <div class="max-w-48">
+          <label for="1"><code>window: 2</code></label>
           <input
             type="text"
             id="1"
-            class="border-2 border-gray-300 rounded-lg p-2 w-full my-2"
+            class="text-input"
+            value=""
           />
-          <button class="bg-indigo-600 min-w-1/2 p-2 text-white" onclick="setUrl(1)"><code>save</code></button>
+          <button class="button" onclick="setUrl(1,document.getElementById('1').value)"><code>save</code></button>
         </div>
       </div>
       <div id="input">
         <div class="max-w-48">
-          <label for="2"><code>window: 2</code></label>
+          <label for="2"><code>window: 3</code></label>
           <input
             type="text"
             id="2"
-            class="border-2 border-gray-300 rounded-lg p-2 w-full my-2"
+            class="text-input"
+            value=""
           />
-          <button class="bg-indigo-600 min-w-1/2 p-2 text-white" onclick="setUrl(2)"><code>save</code></button>
+          <button class="button" onclick="setUrl(2,document.getElementById('2').value)"><code>save</code></button>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-row row-2">
+      <div id="input">
+        <div class="max-w-48">
+          <label for="3"><code>window: 4</code></label>
+          <input
+            type="text"
+            id="3"
+            class="text-input"
+            value=""
+          />
+          <button class="button" onclick="setUrl(3,document.getElementById('3').value)"><code>save</code></button>
         </div>
       </div>
       <div id="input">
         <div class="max-w-48">
-          <label for="3"><code>window: 3</code></label>
+          <label for="4"><code>window: 5</code></label>
           <input
             type="text"
-            id="3"
-            class="border-2 border-gray-300 rounded-lg p-2 w-full my-2"
+            id="4"
+            class="text-input"
+            value=""
           />
-          <button class="bg-indigo-600 min-w-1/2 p-2 text-white" onclick="setUrl(3)"><code>save</code></button>
+          <button class="button" onclick="setUrl(4,document.getElementById('4').value)"><code>save</code></button>
+        </div>
+      </div>
+      <div id="input">
+        <div class="max-w-48">
+          <label for="5"><code>window: 6</code></label>
+          <input
+            type="text"
+            id="5"
+            class="text-input"
+            value=""
+          />
+          <button class="button" onclick="setUrl(5,document.getElementById('5').value)"><code>save</code></button>
         </div>
       </div>
     </div>
-    <div class="flex flex-row">
-      <div id="input"></div>
-      <div id="input"></div>
-      <div id="input"></div>
-    </div>
-    <div class="flex flex-row">
-      <div id="input"></div>
-      <div id="input"></div>
+    <div class="flex flex-row row-3">
+      <div id="input">
+        <div class="max-w-48">
+          <label for="6"><code>window: 7</code></label>
+          <input
+            type="text"
+            id="6"
+            class="text-input"
+            value=""
+          />
+          <button class="button" onclick="setUrl(6,document.getElementById('6').value)"><code>save</code></button>
+        </div>
+      </div>
+      <div id="input">
+        <div class="max-w-48">
+          <label for="7"><code>window: 8</code></label>
+          <input
+            type="text"
+            id="7"
+            class="text-input"
+            value=""
+          />
+          <button class="button" onclick="setUrl(7,document.getElementById('7').value)"><code>save</code></button>
+        </div>
+      </div>
       <div id="link">
-        <a href="https://miro.com" target="_blank" id="frame9" class="">OPEN MIRO</a>
+        <a href="https://miro.com" target="_blank" id="frame9">
+          Tier 3 Miro
+        </a>
       </div>
     </div>
   </div>
 
-  <div class="flex flex-row max-h-[5px] w-full md:w-auto">
+  <div class="flex flex-row max-h-[5px] w-full md:w-auto row-3">
     <a href="index.html" class="bg-indigo-800 min-w-full pb-2"></a>
   </div>
-
-  <style>
-
-    #input {
-      display: flex;
-      flex-direction: column;
-      height: 450px;
-      width: 33.333333%;
-      border: 1px;
-      border-style: solid;
-      place-content: center;
-      place-items: center;
-      text-align: center;
-    }
-
-    #link {
-      height: 450px;
-      width: 33.333333%;
-      --tw-bg-opacity: 1; background-color: rgb(55 48 163 / var(--tw-bg-opacity));
-      font-weight: 700;
-      font-size: 32px;
-      --tw-text-opacity: 1;
-      color: rgb(255 255 255 / var(--tw-text-opacity));
-      text-align: center;
-      place-content: center;
-    }
-
-    #link:hover {
-      --tw-bg-opacity: 1; background-color: rgb(79 70 229 / var(--tw-bg-opacity));
-    }
-
-  </style>
 
 </body>
 
