@@ -9,6 +9,27 @@
   <script>
     document.addEventListener("DOMContentLoaded", function () {
 
+      // initialize row height attributes
+      if (!localStorage.getItem("row1")) {
+        localStorage.setItem("row1", "350px");
+      }
+      if (!localStorage.getItem("row2")) {
+        localStorage.setItem("row2", "350px");
+      }
+      if (!localStorage.getItem("row3")) {
+        localStorage.setItem("row3", "350px");
+      }
+
+      // get row attributes and set css height
+      const row1 = localStorage.getItem("row1");
+      document.getElementById("row1").style.height = row1;
+
+      const row2 = localStorage.getItem("row2");
+      document.getElementById("row2").style.height = row2;
+
+      // const row3 = localStorage.getItem("row3");
+      // document.getElementById("row3").style.height = row3;
+      
       if (!localStorage.getItem("urls")) {
         const initialUrls = ["","", "", "", "", "", "", ""];
         localStorage.setItem("urls", JSON.stringify(initialUrls));
@@ -29,23 +50,21 @@
 
 <body>
   <div>
-    <div class="flex flex-row row-1">
-      <iframe src="" id="frame1"></iframe>
-      <iframe src="" id="frame2"></iframe>
-      <iframe src="" id="frame3"></iframe>
+    <div class="flex flex-row row-1" id="row1">
+      <iframe src="" id="frame1" class="basis-1/3"></iframe>
+      <iframe src="" id="frame2" class="basis-2/3"></iframe>
+      <!-- <iframe src="" id="frame3"></iframe> -->
     </div>
-    <div class="flex flex-row row-2">
-      <iframe src="" id="frame4" ></iframe>
-      <iframe src="" id="frame5" ></iframe>
-      <iframe src="" id="frame6" ></iframe>
+    <div class="flex flex-row row-2" id="row2">
+      <iframe src="" id="frame4" class="basis-full"></iframe>
+      <!-- <iframe src="" id="frame5" ></iframe>
+      <iframe src="" id="frame6" ></iframe> -->
     </div>
-    <div class="flex flex-row row-3">
+    <!-- <div class="flex flex-row row-3" id="row3">
       <iframe src="" id="frame7" ></iframe>
       <iframe src="" id="frame8" ></iframe>
-      <div id="link">
-        <a href="mymiro://" id="frame9" class="row-3">Open Miro</a>
-      </div>
-    </div>
+      <iframe src="" id="frame9" ></iframe>
+    </div> -->
   </div>
 
   <div class="relative">

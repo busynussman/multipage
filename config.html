@@ -9,17 +9,43 @@
   <script>
 
     document.addEventListener("DOMContentLoaded", function () {
+      
+      // initialize row height attributes
+      if (!localStorage.getItem("row1")) {
+        localStorage.setItem("row1", "350px");
+      }
+      if (!localStorage.getItem("row2")) {
+        localStorage.setItem("row2", "350px");
+      }
+      if (!localStorage.getItem("row3")) {
+        localStorage.setItem("row3", "350px");
+      }
 
+      // get row attributes and set css height
+      const row1 = localStorage.getItem("row1");
+      document.getElementById("row1").style.height = row1;
+      document.getElementById("row1input").value = row1;
+      
+      const row2 = localStorage.getItem("row2");
+      document.getElementById("row2").style.height = row2;
+      document.getElementById("row2input").value = row2;
+      
+      // const row3 = localStorage.getItem("row3");
+      // document.getElementById("row3").style.height = row3;
+      // document.getElementById("row3input").value = row3;
+      
+      // set the iframe src attributes
       if (!localStorage.getItem("urls")) {
         const initialUrls = ["","", "", "", "", "", "", ""];
         localStorage.setItem("urls", JSON.stringify(initialUrls));
       }
-
+    
       urlString = localStorage.getItem("urls");
       urlJson = JSON.parse(urlString);
 
       // Get all inputs and set their placeholder text
-      const textInputs = document.querySelectorAll("input");
+      // const textInputs = document.querySelectorAll("input");
+      const textInputs = document.querySelectorAll(".url-input");
       textInputs.forEach((input, index) => {
         if (urlJson && urlJson[index]) {
           input.value = urlJson[index];
@@ -43,6 +69,11 @@
         element.value = url;
       }, 2000);
     };
+
+    function setRowHeight(row, height) {
+      let rowNum = "row" + row;
+      localStorage.setItem(rowNum, height);
+    }
     
   </script>
 
@@ -51,17 +82,27 @@
 <body>
   
   <div>
-    <div class="flex flex-row row-1">
+    <div class="flex flex-row row-1" id="row1">
       <div id="input">
         <div class="max-w-48">
           <label for="0"><code>window: 1</code></label>
           <input
             type="text"
             id="0"
-            class="text-input"
+            class="text-input url-input"
             value=""
           />
           <button class="button" onclick="setUrl(0,document.getElementById('0').value)"><code>save</code></button>
+        </div>
+        <div class="max-w-48 mt-8">
+          <label for="row1input"><code>row 1 height</code></label>
+          <input
+            type="text"
+            id="row1input"
+            class="text-input"
+            value=""
+          />
+          <button class="button" onclick="setRowHeight(1, document.getElementById('row1input').value)"><code>save</code></button>
         </div>
       </div>
       <div id="input">
@@ -70,74 +111,94 @@
           <input
             type="text"
             id="1"
-            class="text-input"
+            class="text-input url-input"
             value=""
           />
           <button class="button" onclick="setUrl(1,document.getElementById('1').value)"><code>save</code></button>
         </div>
       </div>
-      <div id="input">
+      <!-- <div id="input">
         <div class="max-w-48">
           <label for="2"><code>window: 3</code></label>
           <input
             type="text"
             id="2"
-            class="text-input"
+            class="text-input url-input"
             value=""
           />
           <button class="button" onclick="setUrl(2,document.getElementById('2').value)"><code>save</code></button>
         </div>
-      </div>
+      </div> -->
     </div>
-    <div class="flex flex-row row-2">
+    <div class="flex flex-row row-2" id="row2">
       <div id="input">
         <div class="max-w-48">
           <label for="3"><code>window: 4</code></label>
           <input
             type="text"
             id="3"
-            class="text-input"
+            class="text-input url-input"
             value=""
           />
           <button class="button" onclick="setUrl(3,document.getElementById('3').value)"><code>save</code></button>
         </div>
+        <div class="max-w-48 mt-8">
+          <label for="row2input"><code>row 2 height</code></label>
+          <input
+            type="text"
+            id="row2input"
+            class="text-input"
+            value=""
+          />
+          <button class="button" onclick="setRowHeight(2, document.getElementById('row2input').value)"><code>save</code></button>
+        </div>
       </div>
-      <div id="input">
+      <!-- <div id="input">
         <div class="max-w-48">
           <label for="4"><code>window: 5</code></label>
           <input
             type="text"
             id="4"
-            class="text-input"
+            class="text-input url-input"
             value=""
           />
           <button class="button" onclick="setUrl(4,document.getElementById('4').value)"><code>save</code></button>
         </div>
-      </div>
-      <div id="input">
+      </div> -->
+      <!-- <div id="input">
         <div class="max-w-48">
           <label for="5"><code>window: 6</code></label>
           <input
             type="text"
             id="5"
-            class="text-input"
+            class="text-input url-input"
             value=""
           />
           <button class="button" onclick="setUrl(5,document.getElementById('5').value)"><code>save</code></button>
         </div>
-      </div>
+      </div> -->
     </div>
-    <div class="flex flex-row row-3">
+    <!-- <div class="flex flex-row row-3" id="row3">
       <div id="input">
         <div class="max-w-48">
           <label for="6"><code>window: 7</code></label>
           <input
             type="text"
             id="6"
-            class="text-input"
+            class="text-input url-input"
             value=""
           />
           <button class="button" onclick="setUrl(6,document.getElementById('6').value)"><code>save</code></button>
+        </div>
+        <div class="max-w-48 mt-8">
+          <label for="row3input"><code>row 3 height</code></label>
+          <input
+            type="text"
+            id="row3input"
+            class="text-input"
+            value=""
+          />
+          <button class="button" onclick="setRowHeight(3, document.getElementById('row3input').value)"><code>save</code></button>
         </div>
       </div>
       <div id="input">
@@ -146,22 +207,29 @@
           <input
             type="text"
             id="7"
-            class="text-input"
+            class="text-input url-input"
             value=""
           />
           <button class="button" onclick="setUrl(7,document.getElementById('7').value)"><code>save</code></button>
         </div>
       </div>
-      <div id="link">
-        <a href="mymiro://" id="frame9">
-          Open Miro
-        </a>
+      <div id="input">
+        <div class="max-w-48">
+          <label for="8"><code>window: 9</code></label>
+          <input
+            type="text"
+            id="7"
+            class="text-input url-input"
+            value=""
+          />
+          <button class="button" onclick="setUrl(8,document.getElementById('8').value)"><code>save</code></button>
+        </div>
       </div>
-    </div>
+    </div> -->
   </div>
 
   <div class="relative">
-    <a href="index.html" class="fixed bottom-3 left-3 bg-gray-300 opacity-25 w-[25px] h-[25px] rounded-xl"></a>
+    <a href="index.html" class="fixed bottom-3 left-3 bg-gray-300 opacity-90 w-[25px] h-[25px] rounded-xl"></a>
   </div>
 
 </body>
